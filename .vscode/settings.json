@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Skorium!.sln"
+    "dotnet.defaultSolution": "Skorium.sln"
 }
