@@ -2,14 +2,30 @@ using UnityEngine;
 
 public class WeaponSpawner : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField]
+    private static int ammoCount;
+
+    private void Start()
     {
-        
+        ammoCount = 5;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void decreaseAmmo()
+    {
+        ammoCount--;
+    }
+
+    public void increaseAmmo()
+    {
+        ammoCount++;
+    }
+
+    public static int getAmmoCount()
+    {
+        return ammoCount;
+    }
+
+    private void Update()
     {
         
     }
