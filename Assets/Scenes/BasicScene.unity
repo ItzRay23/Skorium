@@ -1232,7 +1232,7 @@ MonoBehaviour:
   m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayers:
-    m_Bits: 1073741825
+    m_Bits: 1
   m_DistanceCalculationMode: 1
   m_SelectMode: 0
   m_FocusMode: 1
@@ -1396,8 +1396,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ammoCounter: {fileID: 576068594}
-  scoreCounter: {fileID: 0}
-  upgradePanel: {fileID: 0}
 --- !u!4 &1089267175
 Transform:
   m_ObjectHideFlags: 0
@@ -1407,7 +1405,7 @@ Transform:
   m_GameObject: {fileID: 1089267173}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.006733, y: -1.8445953, z: 16.370642}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
