@@ -2,31 +2,16 @@ using UnityEngine;
 
 public class WeaponSpawner : MonoBehaviour
 {
-    [SerializeField]
-    private static int ammoCount;
-
-    private void Start()
-    {
-        ammoCount = 5;
-    }
-
+    private GameManager gameManager;
     public void decreaseAmmo()
     {
-        ammoCount--;
+        gameManager.changeAmmoCount(-1);
+        gameManager.updateUI();
     }
 
     public void increaseAmmo()
     {
-        ammoCount++;
-    }
-
-    public static int getAmmoCount()
-    {
-        return ammoCount;
-    }
-
-    private void Update()
-    {
-        
+        gameManager.changeAmmoCount(1);
+        gameManager.updateUI();
     }
 }
