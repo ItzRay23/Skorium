@@ -9,7 +9,7 @@ public class Target : MonoBehaviour
     [SerializeField]
     private TextMeshPro HPText;
 
-    public void TakeDamage(int damage)
+    public void takeDamage(int damage)
     {
         health -= damage;
         if (health <= 0)
@@ -34,6 +34,17 @@ public class Target : MonoBehaviour
     public void updateTarget()
     {
         HPText.text = health.ToString();
+    }
+
+    private void OnTriggerEnter(Collider col)
+    {
+        if (col.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("I was collided with!");
+            takeDamage(Player.damage);
+            Debug.Log("Damage Taken: " + Player.damage);
+            updateTarget();
+        }
     }
 
     public void Start()

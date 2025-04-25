@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour {
     public void Start()
     {
         Player.ammoCount = 10;
+        Player.damage = 5;
         updateUI();
     }
 
