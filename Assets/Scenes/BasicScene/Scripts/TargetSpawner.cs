@@ -62,7 +62,7 @@ public class TargetSpawner : MonoBehaviour
         // If no positions are left, return Vector3.zero (or handle as needed)
         if (positions.Count == 0)
         {
-            Debug.LogWarning("No more unique positions available for spawning.");
+            //Debug.LogWarning("No more unique positions available for spawning.");
             return Vector3.zero;
         }
 
@@ -78,7 +78,7 @@ public class TargetSpawner : MonoBehaviour
             if (Mathf.Approximately(childPosition.x, spawnerTransform.position.x + position.GetPosX()) &&
                 Mathf.Approximately(childPosition.y, spawnerTransform.position.y + position.GetPosY()))
             {
-                Debug.LogWarning("Duplicate position detected. Retrying...");
+                //Debug.LogWarning("Duplicate position detected. Retrying...");
                 return SpawnRandomizer(); // Retry to find a unique position
             }
         }

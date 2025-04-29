@@ -3,13 +3,14 @@ using TMPro;
 
 public class GameManager : MonoBehaviour {
     public GameObject ammoCounter;
-    // public GameObject scoreCounter;
+    public GameObject scoreCounter;
     // public GameObject upgradePanel;
 
     public void Start()
     {
         Player.ammoCount = 10;
         Player.damage = 5;
+        Player.score = 0;
         updateUI();
     }
 
@@ -25,8 +26,9 @@ public class GameManager : MonoBehaviour {
 
     public void updateUI()
     {
-        Debug.Log("Ammo: " + Player.ammoCount.ToString());
+        //Debug.Log("Ammo: " + Player.ammoCount.ToString());
         ammoCounter.GetComponent<TextMeshPro>().text = "Ammo: " + Player.ammoCount.ToString();
-        
+        scoreCounter.GetComponent<TextMeshProUGUI>().text = "Skor: " + Player.score.ToString();
+
     }
 }

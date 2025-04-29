@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Target : MonoBehaviour
 {
-    public int health;
-    public int value;
+    public int health = 10;
+    public int value = 5;
     [SerializeField]
     private TextMeshPro HPText;
 
@@ -14,6 +14,9 @@ public class Target : MonoBehaviour
         health -= damage;
         if (health <= 0)
         {
+            Player.score += value;
+            GameManager gameManager = FindAnyObjectByType<GameManager>();
+            gameManager.updateUI();
             Destroy(gameObject);
         }
     }
@@ -40,9 +43,9 @@ public class Target : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Player"))
         {
-            Debug.Log("I was collided with!");
+            //Debug.Log("I was collided with!");
             takeDamage(Player.damage);
-            Debug.Log("Damage Taken: " + Player.damage);
+            //Debug.Log("Damage Taken: " + Player.damage);
             updateTarget();
         }
     }
