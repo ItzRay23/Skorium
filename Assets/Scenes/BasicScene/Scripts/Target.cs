@@ -4,34 +4,39 @@ using UnityEngine;
 
 public class Target : MonoBehaviour
 {
-    public int health = 10;
-    public int value = 5;
+    private int health = TargetStats.health;
+    private int value = TargetStats.value;
     [SerializeField]
     private TextMeshPro HPText;
+
+    public static void changeHealth(int value)
+    {
+        TargetStats.health += value;
+    }
 
     public void takeDamage(int damage)
     {
         health -= damage;
         if (health <= 0)
         {
-            Player.score += value;
-            GameManager gameManager = FindAnyObjectByType<GameManager>();
-            gameManager.updateUI();
             Destroy(gameObject);
         }
     }
 
-    //public void OnDestroy()
-    //{
-    //    Player.score += value;
-    //    GameManager gameManager = FindAnyObjectByType<GameManager>();
-    //    gameManager.updateUI();
-    //}
+    public void OnDestroy()
+    {
+        int valueGain = (int)(value * (Player.gain + 1f));
+        Player.score += valueGain;
+        Player.totalScore += valueGain;
+        Debug.Log("Target Destroyed with Damage Taken: " + Player.damage.ToString());
+        GameManager gameManager = FindAnyObjectByType<GameManager>();
+        gameManager.UpdateUI();
+    }
 
     public void setTarget(int health, int value)
     {
         this.health = health;
-        this.value = value;
+        TargetStats.value = value;
     }
 
     public void updateTarget()

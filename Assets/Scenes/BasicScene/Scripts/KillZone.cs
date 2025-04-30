@@ -9,7 +9,11 @@ public class KillZone : MonoBehaviour
             //Debug.Log("Player has entered the kill zone!");
             Destroy(collision.gameObject);
             WeaponSpawner weaponSpawner = FindAnyObjectByType<WeaponSpawner>();
-            weaponSpawner.spawnWeapon();
+            GameManager.changeAmmoCount(-1);
+            if (Player.ammoCount > 0)
+            {
+                weaponSpawner.spawnWeapon();
+            }
         }
     }
 }
