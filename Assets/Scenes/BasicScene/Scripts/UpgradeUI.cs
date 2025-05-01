@@ -38,13 +38,13 @@ public class UpgradeUI : MonoBehaviour
     private void updateDamageUpgrade()
     {
         dmgStat.GetComponent<TextMeshProUGUI>().text = "Current Damage: " + Player.damage.ToString();
-        dmgUpgrade.GetComponent<TextMeshProUGUI>().text = "+1 Damage";
+        dmgUpgrade.GetComponent<TextMeshProUGUI>().text = "+20% Current Damage";
         dmgCostText.GetComponent<TextMeshProUGUI>().text = "Cost: " + damageCost.ToString() + " Skor";
     }
 
     private void updateGainUpgrade()
     {
-        gainStat.GetComponent<TextMeshProUGUI>().text = "Current Gain: +" + (Player.gain * 100).ToString() + "%";
+        gainStat.GetComponent<TextMeshProUGUI>().text = "Current Gain: +" + Math.Round(Player.gain * 100, MidpointRounding.AwayFromZero).ToString() + "%";
         gainUpgrade.GetComponent<TextMeshProUGUI>().text = "+20% Skor Gain";
         gainCostText.GetComponent<TextMeshProUGUI>().text = "Cost: " + gainCost.ToString() + " Skor";
     }
@@ -52,7 +52,7 @@ public class UpgradeUI : MonoBehaviour
     private void updateValueUpgrade()
     {
         valueStat.GetComponent<TextMeshProUGUI>().text = "Current Value: " + TargetStats.value.ToString();
-        valueUpgrade.GetComponent<TextMeshProUGUI>().text = "+10% Value";
+        valueUpgrade.GetComponent<TextMeshProUGUI>().text = "+25% Current Value";
         valueCostText.GetComponent<TextMeshProUGUI>().text = "Cost: " + valueCost.ToString() + " Skor";
     }
 
@@ -68,7 +68,7 @@ public class UpgradeUI : MonoBehaviour
         if (Player.score >= damageCost)
         {
             Player.score -= damageCost;
-            Player.damage += 1;
+            Player.damage = (int)(Player.damage * 1.2f);
             damageLvl++;
             damageCost += damageLvl + 2;
             
@@ -81,7 +81,7 @@ public class UpgradeUI : MonoBehaviour
         {
             Player.score -= gainCost;
             Player.gain += 0.2f;
-            gainCost += (int)(gainLvl * Math.Floor(Mathf.Pow(1.4f * gainLvl, 1.2f)));
+            gainCost += (int)(gainLvl * Math.Floor(1.4f * gainLvl));
             gainLvl++;
         }
     }
@@ -91,8 +91,8 @@ public class UpgradeUI : MonoBehaviour
         if (Player.score >= valueCost)
         {
             Player.score -= valueCost;
-            TargetStats.value += (int)(TargetStats.value * 0.1f);
-            valueCost += (int)(valueLvl * Math.Floor(Mathf.Pow(1.5f * valueLvl, 1.3f)));
+            TargetStats.value += (int)(TargetStats.value * 0.25f);
+            valueCost += (int)(valueLvl * Math.Floor(Mathf.Pow(1.5f * valueLvl, 1.1f)));
             valueLvl++;
         }
     }
@@ -112,9 +112,9 @@ public class UpgradeUI : MonoBehaviour
                 Player.ammoCount += 10;
             }
 
-            if (ammoCost < 50)
+            if (ammoCost < 30)
             {
-                ammoCost += 2;
+                ammoCost += 1;
             }
         }
     }

@@ -299,3 +299,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HPText: {fileID: 1405992126103961303}
+  explosionPrefab: {fileID: 1772470677147888739, guid: 3750451f8a3fed84ebf453d25bf1b638, type: 3}
